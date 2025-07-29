@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stand With Israel - Victory Through Unity</title>
+    <style>
+        :root {
+            --primary-blue: #2A5C8B;
+            --secondary-blue: #1E3A5F;
+            --accent-gold: #D4AF37;
+            --pure-white: #FFFFFF;
+            --light-gray: #F5F5F5;
+            --hebrew-font: 'Arial Hebrew', sans-serif;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: var(--light-gray);
+            line-height: 1.6;
+        }
+        
+        .hebrew {
+            font-family: var(--hebrew-font);
+            direction: rtl;
+        }
+        
+        header {
+            background: linear-gradient(rgba(42, 92, 139, 0.9), rgba(30, 58, 95, 0.9)), 
+                        url('https://images.unsplash.com/photo-1581447109200-bf2769116351?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23D4AF37" d="M50 20L30 50l20 30 20-30z"/><path fill="%232A5C8B" d="M40 60a10 10 0 1120 0 10 10 0 01-20 0z"/></svg>') no-repeat;
+        }
+        
+        .donation-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tier-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 25px;
+            text-align: center;
+            border-top: 5px solid var(--accent-gold);
+            transition: transform 0.3s;
+        }
+        
+        .tier-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .payment-options {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .crypto-wallet {
+            background: var(--pure-white);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-blue);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .qr-code {
+            margin: 15px auto;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .copy-btn {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .copy-btn:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        #languageToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid white;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 100;
+        }
+        
+        footer {
+            background-color: var(--secondary-blue);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .donation-tiers {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+            
+            header {
+                padding: 60px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button id="languageToggle">עברית</button>
+
+    <header>
+        <div class="logo"></div>
+        <h1 class="english">Victory Through Unity</h1>
+        <h1 class="hebrew" style="display:none">ננצח ביחד</h1>
+        <p class="english">Every donation brings Israel closer to victory</p>
+        <p class="hebrew" style="display:none">כל תרומה מקרבת את הניצחון</p>
+        <button id="donateBtn" class="cta-button english">Donate Now</button>
+        <button id="donateBtnHebrew" class="cta-button hebrew" style="display:none">תרמו עכשיו</button>
+    </header>
+
+    <section class="mission">
+        <div class="english">
+            <h2>Our Mission</h2>
+            <p>"Am Yisrael Chai! In this critical time, your cryptocurrency donations provide direct support to Israel's defense efforts. Every contribution makes a difference."</p>
+        </div>
+        <div class="hebrew" style="display:none">
+            <h2>השליחות שלנו</h2>
+            <p>"עם ישראל חי! בתרומותיך תסייע ישירות למאמץ ההגנה של ישראל. כל תרומה משמעותית."</p>
+        </div>
+    </section>
+
+    <section class="donation-tiers">
+        <div class="tier-card">
+            <h3 class="english">$100 - Defender</h3>
+            <h3 class="hebrew" style="display:none">$100 - מגן</h3>
+            <p class="english">Personal thank-you certificate</p>
+            <p class="hebrew" style="display:none">תעודת תודה אישית</p>
+        </div>
+        <div class="tier-card">
+            <h3 class="english">$1,000 - Guardian</h3>
+            <h3 class="hebrew" style="display:none">$1,000 - שומר</h3>
+            <p class="english">Certificate + Monthly impact report</p>
+            <p class="hebrew" style="display:none">תעודה + דוח חודשי</p>
+        </div>
+        <div class="tier-card">
+            <h3 class="english">$10,000 - Hero</h3>
+            <h3 class="hebrew" style="display:none">$10,000 - גיבור</h3>
+            <p class="english">All above + Video call with soldiers</p>
+            <p class="hebrew" style="display:none">כל הנ"ל + שיחת וידאו עם לוחמים</p>
+        </div>
+        <div class="tier-card">
+            <h3 class="english">$1,000,000 - Visionary</h3>
+            <h3 class="hebrew" style="display:none">$1,000,000 - חוזה</h3>
+            <p class="english">All above + Memorial naming opportunity</p>
+            <p class="hebrew" style="display:none">כל הנ"ל + הזדמנות להנצחה</p>
+        </div>
+    </section>
+
+    <section class="payment-options">
+        <div class="english">
+            <h2>Payment Options</h2>
+            <h3>Cryptocurrency (Recommended)</h3>
+        </div>
+        <div class="hebrew" style="display:none">
+            <h2>אפשרויות תשלום</h2>
+            <h3>מטבעות קריפטו (מומלץ)</h3>
+        </div>
+        
+        <div class="crypto-wallet">
+            <h4 class="english">Bitcoin (BTC) <span id="btc-value"></span></h4>
+            <h4 class="hebrew" style="display:none">ביטקוין (BTC) <span id="btc-value-he"></span></h4>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=bc1qfxvugu49qcm49f4prqak984y3tjjdll5exa2rc" alt="BTC QR">
+            </div>
+            <p class="address">bc1qfxvugu49qcm49f4prqak984y3tjjdll5exa2rc</p>
+            <button class="copy-btn english">Copy Address</button>
+            <button class="copy-btn hebrew" style="display:none">העתק כתובת</button>
+        </div>
+        
+        <div class="crypto-wallet">
+            <h4 class="english">Ethereum (ETH/ERC-20) <span id="eth-value"></span></h4>
+            <h4 class="hebrew" style="display:none">אתריום (ETH/ERC-20) <span id="eth-value-he"></span></h4>
+            <div class="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=0xFE14dF4e9670BD346Ed5CE729E9E3b07a3b807d8" alt="ETH QR">
+            </div>
+            <p class="address">0xFE14dF4e9670BD346Ed5CE729E9E3b07a3b807d8</p>
+            <button class="copy-btn english">Copy Address</button>
+            <button class="copy-btn hebrew" style="display:none">העתק כתובת</button>
+        </div>
+
+        <div class="english">
+            <h3>Credit/Debit Card</h3>
+            <p>For instant processing (powered by Stripe):</p>
+        </div>
+        <div class="hebrew" style="display:none">
+            <h3>כרטיס אשראי</h3>
+            <p>לתשלום מיידי (באמצעות Stripe):</p>
+        </div>
+        
+        <form id="ccForm" class="english">
+            <input type="text" placeholder="Card Number" required>
+            <input type="text" placeholder="MM/YY" required>
+            <input type="text" placeholder="CVV" required>
+            <input type="text" placeholder="Name on Card" required>
+            <button type="submit">Donate Now</button>
+        </form>
+        
+        <form id="ccFormHebrew" class="hebrew" style="display:none">
+            <input type="text" placeholder="מספר כרטיס" required>
+            <input type="text" placeholder="חודש/שנה" required>
+            <input type="text" placeholder="קוד אבטחה" required>
+            <input type="text" placeholder="שם על הכרטיס" required>
+            <button type="submit">תרמו עכשיו</button>
+        </form>
+    </section>
+
+    <footer>
+        <p class="english">© 2023 Stand With Israel. All donations support Israel's defense efforts.</p>
+        <p class="hebrew" style="display:none">© 2023 עומדים עם ישראל. כל התרומות תומכות במאמץ ההגנה של ישראל.</p>
+    </footer>
+
+    <script>
+        // Language Toggle
+        document.getElementById('languageToggle').addEventListener('click', function() {
+            const englishElements = document.querySelectorAll('.english');
+            const hebrewElements = document.querySelectorAll('.hebrew');
+            
+            if (this.textContent === 'עברית') {
+                this.textContent = 'English';
+                englishElements.forEach(el => el.style.display = 'none');
+                hebrewElements.forEach(el => el.style.display = 'block');
+            } else {
+                this.textContent = 'עברית';
+                englishElements.forEach(el => el.style.display = 'block');
+                hebrewElements.forEach(el => el.style.display = 'none');
+            }
+        });
+
+        // Crypto Price Conversion
+        function updateCryptoPrices() {
+            fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('btc-value').innerText = `($${data.bitcoin.usd.toLocaleString()} USD)`;
+                    document.getElementById('eth-value').innerText = `($${data.ethereum.usd.toLocaleString()} USD)`;
+                    document.getElementById('btc-value-he').innerText = `($${data.bitcoin.usd.toLocaleString()} דולר)`;
+                    document.getElementById('eth-value-he').innerText = `($${data.ethereum.usd.toLocaleString()} דולר)`;
+                })
+                .catch(error => {
+                    console.log('Error fetching crypto prices:', error);
+                });
+        }
+
+        // Update prices on load and every 5 minutes
+        updateCryptoPrices();
+        setInterval(updateCryptoPrices, 300000);
+
+        // Copy wallet addresses
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const address = this.parentElement.querySelector('.address').textContent;
+                navigator.clipboard.writeText(address);
+                const originalText = this.textContent;
+                this.textContent = this.classList.contains('english') ? 'Copied!' : 'הועתק!';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                }, 2000);
+            });
+        });
+        
+        // Credit card form handling
+        document.getElementById('ccForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.location.href = "https://donate.stripe.com/test_00g3fV3YJ0jZ1mU144"; // Replace with your actual Stripe link
+        });
+        
+        document.getElementById('ccFormHebrew').addEventListener('submit', function(e) {
+            e.preventDefault();
+            window.location.href = "https://donate.stripe.com/test_00g3fV3YJ0jZ1mU144"; // Replace with your actual Stripe link
+        });
+    </script>
+</body>
+</html>
